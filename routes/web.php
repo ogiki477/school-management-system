@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.layouts._app');
-});
+
+//Auth 
+Route::get('/',[AuthController::class,'login']);
+Route::get('register',[AuthController::class,'register']);
+Route::get('forgot',[AuthController::class,'forgot']);
