@@ -45,13 +45,18 @@ class AuthController extends Controller
 
         if(Auth::attempt(['email' => $request->email,'password' => $request->password],$remember)){
 
-            return redirect('admin/dashboard')->with('success','Logged In Successfully');
+            return redirect('admin/dashboard');
 
         } else {
          
             return redirect('')->with('error','Wrong Credentials');
         }
 
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect('/');
     }
 
 }
