@@ -2,11 +2,6 @@
 
 @section('content')
 
-
-
-
-    
-
             <div class="card mb-3">
 
               <div class="card-body">
@@ -25,7 +20,9 @@
                   <div class="col-12">
                     <button class="btn btn-primary w-100" type="submit">Submit</button>
                   </div>
-                
+                  <div class="col-12">
+                    <p class="small mb-0"><a href="{{ url('')}}">Log in</a></p>
+                  </div>
                 </form>
 
               </div>

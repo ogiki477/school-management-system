@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[AuthController::class,'login']);
 Route::get('register',[AuthController::class,'register']);
 Route::get('forgot',[AuthController::class,'forgot']);
+Route::post('register',[AuthController::class,'register_insert']);
+
+
+//Dashboard
+Route::get('admin/dashboard',[DashboardController::class,'admin_dashboard']);

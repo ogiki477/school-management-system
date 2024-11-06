@@ -1,21 +1,9 @@
-@extends('admin.layouts._app')
-
-
-@section('content')
-
- <!-- ======= Footer ======= -->
- <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
-
-
-@endsection
+  <!--begin::Footer-->
+  <footer class="app-footer"> <!--begin::To the end-->
+    <div class="float-end d-none d-sm-inline">Anything you want</div> <!--end::To the end--> <!--begin::Copyright--> <strong>
+        Copyright &copy; 2024&nbsp;
+        Designed by <a href="https://ogiki477.me/"> Ogiki Moses Odera </a>
+    </strong>
+    All rights reserved.
+    <!--end::Copyright-->
+</footer> <!--end::Footer-->

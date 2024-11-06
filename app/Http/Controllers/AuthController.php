@@ -19,4 +19,9 @@ class AuthController extends Controller
     public function forgot(Request $request){
         return view('auth.forgot');
     }
+
+    public function register_insert(Request $request){
+       // dd($request->all());
+       
+    }
 }
