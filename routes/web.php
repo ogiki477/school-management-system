@@ -29,3 +29,27 @@ Route::get('logout',[AuthController::class,'logout']);
 
 //Dashboard
 Route::get('admin/dashboard',[DashboardController::class,'admin_dashboard']);
+
+
+//Admin Middleware
+Route::group(['middleware' => 'admin'], function(){
+
+});
+
+//Student Middleware
+Route::group(['middleware' => 'student'],function(){
+
+
+});
+
+//Teacher Middleware
+Route::group(['middleware' => 'teacher'],function(){
+
+});
+
+
+Route::group(['middleware' => 'parent'],function(){
+    
+});
+
+
