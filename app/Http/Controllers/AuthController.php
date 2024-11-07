@@ -11,7 +11,17 @@ class AuthController extends Controller
     public function login(Request $request){
         //dd("Yoo");
         if(!empty(Auth::check())){
-            return redirect('admin/dashboard');
+            if(Auth::user()->is_role == 1){
+
+                return redirect('admin/dashboard');
+
+            }else if(Auth::user()->is_role == 2){
+                return redirect('teacher/dashboard');
+            } else if(Auth::user()->is_role == 3){
+                return redirect('student/dashboard');
+            }else if(Auth::user()->is_role == 4){
+                return redirect('parent/dashboard');
+            }
         }
         $data['meta_title'] = 'login';
         return view('auth.login',$data);
@@ -48,8 +58,17 @@ class AuthController extends Controller
 
         if(Auth::attempt(['email' => $request->email,'password' => $request->password],$remember)){
 
-            return redirect('admin/dashboard');
+            if(Auth::user()->is_role == 1){
 
+                return redirect('admin/dashboard');
+
+            }else if(Auth::user()->is_role == 2){
+                return redirect('teacher/dashboard');
+            } else if(Auth::user()->is_role == 3){
+                return redirect('student/dashboard');
+            }else if(Auth::user()->is_role == 4){
+                return redirect('parent/dashboard');
+            }
         } else {
          
             return redirect('')->with('error','Wrong Credentials');
