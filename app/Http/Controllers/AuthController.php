@@ -13,16 +13,19 @@ class AuthController extends Controller
         if(!empty(Auth::check())){
             return redirect('admin/dashboard');
         }
-        return view('auth.login');
+        $data['meta_title'] = 'login';
+        return view('auth.login',$data);
     }
 
 
     public function register(Request $request){
-        return view('auth.register');
+        $data['meta_title'] = 'register';
+        return view('auth.register',$data);
     }
 
     public function forgot(Request $request){
-        return view('auth.forgot');
+        $data['meta_title'] = 'forgot';
+        return view('auth.forgot',$data);
     }
 
     public function register_insert(Request $request){
