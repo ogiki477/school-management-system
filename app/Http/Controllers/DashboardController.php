@@ -25,5 +25,10 @@ class DashboardController extends Controller
             $data['meta_title'] = 'parent_dashboard';
             return view('parent.dashboard',$data);
         }
-    }    
+    }  
+    
+    public function admin_list(Request $request){
+        $data['meta_title'] = 'admin_list';
+        return view('admin.admin_list.list',$data);
+    }
 }

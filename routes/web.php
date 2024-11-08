@@ -34,6 +34,8 @@ Route::group(['middleware' => 'admin'], function(){
 
     //Admin Dashboard
     Route::get('admin/dashboard',[DashboardController::class,'dashboard']);
+    Route::get('admin/list',[DashboardController::class,'admin_list']);
+
 
 
 });
