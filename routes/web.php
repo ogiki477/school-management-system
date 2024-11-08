@@ -33,7 +33,7 @@ Route::get('logout',[AuthController::class,'logout']);
 Route::group(['middleware' => 'admin'], function(){
 
     //Admin Dashboard
-    Route::get('admin/dashboard',[DashboardController::class,'admin_dashboard']);
+    Route::get('admin/dashboard',[DashboardController::class,'dashboard']);
 
 
 });
@@ -42,7 +42,7 @@ Route::group(['middleware' => 'admin'], function(){
 Route::group(['middleware' => 'student'],function(){
 
     //Student Dashboard
-    Route::get('student/dashboard',[DashboardController::class,'student_dashboard']);
+    Route::get('student/dashboard',[DashboardController::class,'dashboard']);
 
 
 });
@@ -52,7 +52,7 @@ Route::group(['middleware' => 'teacher'],function(){
 
     //Teacher Dashboard
     
-    Route::get('teacher/dashboard',[DashboardController::class,'teacher_dashboard']);
+    Route::get('teacher/dashboard',[DashboardController::class,'dashboard']);
 
 });
 
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'teacher'],function(){
 Route::group(['middleware' => 'parent'],function(){
 
     //Parent Dashboard
-    Route::get('parent/dashboard',[DashboardController::class,'parent_dashboard']);
+    Route::get('parent/dashboard',[DashboardController::class,'dashboard']);
 
 });
 
