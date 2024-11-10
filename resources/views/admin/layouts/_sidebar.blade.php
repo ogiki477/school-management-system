@@ -28,7 +28,13 @@
                 <li class="nav-item menu-open"> 
                     <a href="{{ url('teacher/dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @else active @endif  active"> <i class="nav-icon bi bi-speedometer"></i> 
                     <p>Dashboard</p></a>
-                </li>       
+                </li>   
+                
+                
+                <li class="nav-item menu-open"> 
+                    <a href="{{ url('teacher/list')}}" class="nav-link @if(Request::segment(2) == 'list') @else active @endif"> <i class="nav-icon bi bi-person"></i> 
+                    <p>Teacher</p></a>
+                </li>
             </ul> <!--end::Sidebar Menu-->
         </nav>
         @endif
@@ -40,7 +46,13 @@
                 <li class="nav-item menu-open"> 
                     <a href="{{ url('student/dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @else active @endif"> <i class="nav-icon bi bi-speedometer"></i> 
                     <p>Dashboard</p></a>
-                </li>       
+                </li> 
+                
+                
+                <li class="nav-item menu-open"> 
+                    <a href="{{ url('student/list')}}" class="nav-link @if(Request::segment(2) == 'list') @else active @endif"> <i class="nav-icon bi bi-person"></i> 
+                    <p>Student</p></a>
+                </li>
             </ul> <!--end::Sidebar Menu-->
         </nav>
         @endif
@@ -52,7 +64,13 @@
                 <li class="nav-item menu-open"> 
                     <a href="{{ url('parent/dashboard') }}" class="nav-link @if(Request::segment(2) == 'dashboard') @else active @endif"> <i class="nav-icon bi bi-speedometer"></i> 
                     <p>Dashboard</p></a>
-                </li>       
+                </li>  
+                
+                
+                <li class="nav-item menu-open"> 
+                    <a href="{{ url('parent/list')}}" class="nav-link @if(Request::segment(2) == 'list') @else active @endif"> <i class="nav-icon bi bi-person"></i> 
+                    <p>Parent</p></a>
+                </li>
             </ul> <!--end::Sidebar Menu-->
         </nav>
         @endif
