@@ -38,6 +38,10 @@ class AuthController extends Controller
         return view('auth.forgot',$data);
     }
 
+    public function forgot_post(Request $request){
+        dd("yooo");
+    }
+
     public function register_insert(Request $request){
        dd($request->all());
 
