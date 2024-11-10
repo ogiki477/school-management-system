@@ -11,7 +11,8 @@
                   <p class="text-center small">Enter Your Email to reset password</p>
                 </div>
 
-                <form class="row g-3 needs-validation" novalidate>
+                <form action="{{ url('forgot')}}"  method="post" class="row g-3 needs-validation" novalidate>
+                    {{ csrf_field() }}
                   <div class="col-12">
                     <label for="yourEmail" class="form-label">Your Email</label>
                     <input type="email" name="email" class="form-control" id="yourEmail" required>
