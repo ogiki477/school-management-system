@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgotPasswordMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -48,7 +50,13 @@ class AuthController extends Controller
         $random_pass = rand(111111,999999);
         $data->password = Hash::make($random_pass);
         $data->save();
-        
+
+        Mail::to($data->email)->send( new ForgotPasswordMail($data));
+
+        return redirect()->back()-with('success','Your new Password has been sent to your email');
+
+       }else{
+        return redirect()->back()->with('error','Email Not Found');
        }
     }
 
