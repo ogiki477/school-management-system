@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,16 @@ class AuthController extends Controller
     }
 
     public function forgot_post(Request $request){
-        dd("yooo");
+       // dd("yooo");
+       $count = User::where('email','=',$request->email)->count();
+       if($count > 0){
+        $data = User::where('email','=',$request->email)->first();
+
+        $random_pass = rand(111111,999999);
+        $data->password = Hash::make($random_pass);
+        $data->save();
+        
+       }
     }
 
     public function register_insert(Request $request){
