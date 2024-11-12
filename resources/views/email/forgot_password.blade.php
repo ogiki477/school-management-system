@@ -1,11 +1,21 @@
-Hello, {{ $data->name}}
+@component('mail::message')
+
+Hello, {{ $data->name }},
 
 <br>
 
-Your New Password: <b> {{ $data->random_pass}}</b>
+<p>We understand it happens.</p>
 
-<br>
+
+@component('mail::button',['url' => url('reset/' .$data->remember_token )])
+
+Reset Your Password
+
+@endcomponent
 
 Best Regards.
 <br>
 {{ config('app.name') }}
+    
+@endcomponent
+

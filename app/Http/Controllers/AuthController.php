@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -42,18 +43,18 @@ class AuthController extends Controller
     }
 
     public function forgot_post(Request $request){
-       // dd("yooo");
-       $count = User::where('email','=',$request->email)->count();
-       if($count > 0){
-        $data = User::where('email','=',$request->email)->first();
+       //dd("yooo");
 
-        $random_pass = rand(111111,999999);
-        $data->password = Hash::make($random_pass);
+       $data = User::getEmailSingle($request->email);
+       //dd($getEmail);
+       if(!empty($data)){
+    
+
+        $data->remember_token = Str::random(30);
         $data->save();
-
         Mail::to($data->email)->send( new ForgotPasswordMail($data));
 
-        return redirect()->back()-with('success','Your new Password has been sent to your email');
+        return redirect('forgot')->with('success','Check Your Email To Reset Your Password');
 
        }else{
         return redirect()->back()->with('error','Email Not Found');
