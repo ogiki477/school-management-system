@@ -13,6 +13,9 @@ use Illuminate\Support\Str;
 class AuthController extends Controller
 {
     public function login(Request $request){
+        // $pass = '1234';
+        // $hashedpass = Hash::make($pass);
+        // dd($hashedpass);
         //dd("Yoo");
         if(!empty(Auth::check())){
             if(Auth::user()->is_role == 1){
