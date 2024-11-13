@@ -7,9 +7,9 @@ Hello, {{ $data->name }},
 <p>We understand it happens.</p>
 
 
-@component('mail::button',['url' => url('reset/' .$data->remember_token )])
+@component('mail::button',['url' => url('reset/'.$data->remember_token )])
 
-Reset Your Password
+Click to Reset Password
 
 @endcomponent
 

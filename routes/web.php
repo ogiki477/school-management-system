@@ -23,7 +23,8 @@ Route::get('register',[AuthController::class,'register']);
 Route::post('register',[AuthController::class,'register_insert']);
 Route::get('forgot',[AuthController::class,'forgot']);
 Route::post('forgot',[AuthController::class,'forgot_post']);
-
+Route::get('reset/{token}',[AuthController::class,'reset_password']);
+Route::post('reset/{token}',[AuthController::class,'post_reset_password']);
 Route::get('logout',[AuthController::class,'logout']);
 
 

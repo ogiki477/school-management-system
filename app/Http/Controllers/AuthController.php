@@ -54,7 +54,7 @@ class AuthController extends Controller
         $data->save();
         Mail::to($data->email)->send( new ForgotPasswordMail($data));
 
-        return redirect('forgot')->with('success','Check Your Email To Reset Your Password');
+        return redirect()->back()->with('success','Check Your Email To Reset Your Password');
 
        }else{
         return redirect()->back()->with('error','Email Not Found');
@@ -97,6 +97,42 @@ class AuthController extends Controller
             return redirect('')->with('error','Wrong Credentials');
         }
 
+    }
+
+    public function reset_password($remember_token){
+       // dd($token);
+
+       $data = User::getTokenSingle($remember_token);
+
+       if(!empty($data)){
+        $data['data'] = $data;
+        $data['meta_title'] = 'reset_password';
+        return view('auth.reset',$data);
+       }else{
+        abort(404);
+       }
+
+
+    }
+
+    public function post_reset_password($remember_token ,Request $request){
+        if($request->password == $request->cpassword){
+
+            $data = User::getTokenSingle($remember_token);
+            $data->password = Hash::make($request->password);
+            $data->remember_token = Str::random(30);
+            $data->save();
+
+            return redirect('')->with('success','Password Successfully Reset');
+
+            
+
+        }else {
+
+            return redirect()->back()->with('error','Password And Confirm Password Does not Match!!'); 
+
+
+        }
     }
 
     public function logout(Request $request){
