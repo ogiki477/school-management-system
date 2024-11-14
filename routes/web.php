@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +38,7 @@ Route::group(['middleware' => 'admin'], function(){
 
     //Admin Dashboard
     Route::get('admin/dashboard',[DashboardController::class,'dashboard']);
-    Route::get('admin/list',[DashboardController::class,'admin_list']);
+    Route::get('admin/list',[AdminController::class,'admin_list']);
 
 
 
