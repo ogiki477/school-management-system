@@ -10,4 +10,9 @@ class AdminController extends Controller
         $data['meta_title'] = "admin_list";
         return view('admin.admin_list.list',$data);
     }
+
+    public function add(Request $request){
+        $data['meta_title'] = "add_admin";
+        return view('admin.admin_list.add',$data);
+    }
 }
