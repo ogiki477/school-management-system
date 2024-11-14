@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    //
+    public function list(Request $request){
+        $data['meta_title'] = "admin_list";
+        return view('admin.admin_list.list',$data);
+    }
 }

@@ -5,5 +5,11 @@
 
 <h1>Admin List</h1>
 
+<div>
+    <section>
+        
+    </section>
+</div>
+
 
 @endsection
