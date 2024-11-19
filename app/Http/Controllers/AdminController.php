@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
     public function list(Request $request){
+        $data['getRecord'] = User::getAdmin();
         $data['meta_title'] = "admin_list";
         return view('admin.admin_list.list',$data);
     }
@@ -17,6 +20,16 @@ class AdminController extends Controller
     }
 
     public function insert_add(Request $request){
-        dd("yOO");
+        //dd($request->all());
+        $data = new User();
+        $data->name = trim($request->name);
+        $data->email = trim($request->email);
+        $data->password = Hash::make($request->password);
+        $data->is_role = 1;
+
+        $data->save();
+
+        return redirect('admin/list')->with('success','The Admin User has been created Successfully');
+
     }
 }
