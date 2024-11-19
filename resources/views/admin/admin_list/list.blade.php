@@ -19,10 +19,22 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Registered Date</th>
+                                <th>Action</th>
+
                             </thead>
                             <tbody>
                                 @foreach ($getRecord as $getRecord)
-                                    
+                                    <tr>
+                                        <td>{{ $getRecord->id}}</td>
+                                        <td>{{ $getRecord->name}}</td>
+                                        <td>{{ $getRecord->email}}</td>
+                                        <td>{{ date('d-m-Y',strtotime($getRecord->created_at))}}</td>
+                                        <td>
+                                            <a href="" class="btn btn-primary"> <i class="bi bi-pencil-square"></i></a>
+                                            <a href="" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                            {{-- <a href="" class="btn btn-warning"><i class="bi bi-eye"></i></a> --}}
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
 
