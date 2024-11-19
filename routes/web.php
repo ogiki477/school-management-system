@@ -40,6 +40,7 @@ Route::group(['middleware' => 'admin'], function(){
     Route::get('admin/dashboard',[DashboardController::class,'dashboard']);
     Route::get('admin/list',[AdminController::class,'list']);
     Route::get('admin/add',[AdminController::class,'add']);
+    Route::post('admin/add',[AdminController::class,'insert_add']);
 
 
 
