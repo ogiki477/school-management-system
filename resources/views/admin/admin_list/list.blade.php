@@ -30,8 +30,8 @@
                                         <td>{{ $getRecord->email}}</td>
                                         <td>{{ date('d-m-Y',strtotime($getRecord->created_at))}}</td>
                                         <td>
-                                            <a href="" class="btn btn-primary"> <i class="bi bi-pencil-square"></i></a>
-                                            <a href="" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                            <a href="{{ url('admin/edit/'.$getRecord->id)}}" class="btn btn-primary"> <i class="bi bi-pencil-square"></i></a>
+                                            <a href="{{ url('admin/delete/'.$getRecord->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want delete?')"><i class="bi bi-trash"></i></a>
                                             {{-- <a href="" class="btn btn-warning"><i class="bi bi-eye"></i></a> --}}
                                         </td>
                                     </tr>

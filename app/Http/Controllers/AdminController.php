@@ -32,4 +32,37 @@ class AdminController extends Controller
         return redirect('admin/list')->with('success','The Admin User has been created Successfully');
 
     }
+
+    public function edit(Request $request,$id){
+       // dd("Yooo");
+       $data['getRecord'] = User::find($id);
+       $data['meta_title'] = 'edit_admin';
+       return view('admin.admin_list.edit',$data);
+    }
+
+    public function edit_insert(Request $request,$id){
+        //dd("Yooo");
+
+        $data = User::find($id);
+
+        $data->name = trim($request->name);
+        
+        $data->email = trim($request->email);
+
+        $data->password = Hash::make($request->password);
+
+        $data->save();
+
+        return redirect('admin/list')->with('success','The Admin User has been Updated Successfully');
+    }
+
+    public function delete(Request $request,$id){
+        //dd('yOO');
+
+        $data = User::find($id);
+
+        $data->delete();
+
+        return redirect()->back()->with('error','The user has been Deleted');
+    }
 }

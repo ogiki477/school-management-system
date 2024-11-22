@@ -7,31 +7,32 @@
         <div class="container-fluid">
             <div class="row mb-2 align-items-center">
                 <div class="col-sm-16">
-                    <h1>Add New Admin</h1>
+                    <h1>Edit Admin</h1>
 
                         <div class="card card-primary card-outline mb-4"> 
                             
-                            <form action="{{ url('admin/add')}}" method="post"> 
+                            <form action="{{ url('admin/edit/'.$getRecord->id)}}" method="post"> 
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="mb-3"> 
-                                        <label  class="form-label">Name <span style="color: red">*</span></label> 
-                                        <input type="text" name="name" class="form-control" placeholder="Enter name" required>
+                                        <label  class="form-label">Name</label> 
+                                        <input type="text" name="name" class="form-control" value="{{ $getRecord->name}}">
                                     </div>
                                     <div class="mb-3"> 
-                                        <label  class="form-label">Email <span style="color: red">*</span></label> 
-                                        <input type="email" name="email" class="form-control"  placeholder="Enter email" required>
+                                        <label  class="form-label">Email</label> 
+                                        <input type="email" name="email" class="form-control"   value="{{ $getRecord->email}}">
                                       
                                     </div>
                                     <div class="mb-3"> 
-                                        <label class="form-label">Password <span style="color: red">*</span></label> 
-                                        <input type="password" name="password" class="form-control" placeholder="password"> 
+                                        <label class="form-label">Password</label> 
+                                        <input type="password" name="password" class="form-control" value="{{ $getRecord->password}}"> 
+                                        <div> <p>Leave it blank if you do not want to change Password!!</p> </div>
                                     </div>
                                     
                                    
                                 </div>
                                 <div class="card-footer"> 
-                                    <button type="submit" class="btn btn-primary">Submit</button> 
+                                    <button type="submit" class="btn btn-primary">Update</button> 
                                 </div> 
                             </form>   
                         </div>
