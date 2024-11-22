@@ -36,8 +36,15 @@ class AdminController extends Controller
     public function edit(Request $request,$id){
        // dd("Yooo");
        $data['getRecord'] = User::find($id);
-       $data['meta_title'] = 'edit_admin';
-       return view('admin.admin_list.edit',$data);
+       if(!empty($data['getRecord'] )){
+
+        $data['meta_title'] = 'edit_admin';
+        return view('admin.admin_list.edit',$data);
+
+       }else{
+        abort(404);
+       }
+      
     }
 
     public function edit_insert(Request $request,$id){
