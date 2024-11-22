@@ -12,36 +12,65 @@
                 <div class="col-sm-12">
                     @include('message')
                     <h1>Admin List</h1>
+
+                    {{-- Filter Dropdown --}}
+                    <div class="mb-3">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Filter Search
+                            </button>
+                            <div class="dropdown-menu p-4 shadow" style="min-width: 300px;" aria-labelledby="filterDropdown">
+                                <form action="{{ url('admin/list') }}" method="GET">
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" name="name" value="{{ Request::get('name') }}" class="form-control" placeholder="Enter name">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="text" name="email" value="{{ Request::get('email') }}" class="form-control" placeholder="Enter email">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                    <a href="{{ url('admin/list') }}" class="btn btn-secondary">Reset</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card-body p-0">
                         <table class="table table-striped">
                             <thead>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Registered Date</th>
-                                <th>Action</th>
-
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Registered Date</th>
+                                    <th>Action</th>
+                                </tr>
                             </thead>
                             <tbody>
-                                @foreach ($getRecord as $getRecord)
+                                @foreach ($getRecord as $value)
                                     <tr>
-                                        <td>{{ $getRecord->id}}</td>
-                                        <td>{{ $getRecord->name}}</td>
-                                        <td>{{ $getRecord->email}}</td>
-                                        <td>{{ date('d-m-Y',strtotime($getRecord->created_at))}}</td>
+                                        <td>{{ $value->id }}</td>
+                                        <td>{{ $value->name }}</td>
+                                        <td>{{ $value->email }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
                                         <td>
-                                            <a href="{{ url('admin/edit/'.$getRecord->id)}}" class="btn btn-primary"> <i class="bi bi-pencil-square"></i></a>
-                                            <a href="{{ url('admin/delete/'.$getRecord->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure you want delete?')"><i class="bi bi-trash"></i></a>
-                                            {{-- <a href="" class="btn btn-warning"><i class="bi bi-eye"></i></a> --}}
+                                            <a href="{{ url('admin/edit/'.$value->id) }}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="{{ url('admin/delete/'.$value->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
-
                         </table>
+
+                        {{-- Pagination Links --}}
+                        <div>
+                            {!! $getRecord->appends(request()->except('page'))->links() !!}
+                        </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>

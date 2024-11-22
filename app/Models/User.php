@@ -52,7 +52,13 @@ class User extends Authenticatable
 
     static public function getAdmin(){
 
-        return self::select('users.*')->where('is_role','=',1)->orderBy('id','desc')->get();
+        $data =  self::select('users.*')
+                    ->where('is_role','=',1);
+                    
+        $data = $data->orderBy('id','desc')
+                     ->paginate(2);
+
+        return $data;
 
 
     }

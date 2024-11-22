@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     public function list(Request $request){
-        $data['getRecord'] = User::getAdmin();
+        $data['getRecord'] = User::getAdmin();  
         $data['meta_title'] = "admin_list";
         return view('admin.admin_list.list',$data);
     }
