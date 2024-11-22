@@ -21,6 +21,10 @@ class AdminController extends Controller
 
     public function insert_add(Request $request){
         //dd($request->all());
+        $data = $request->validate([
+            'email' => 'required|email|unique:users',
+
+        ]);
         $data = new User();
         $data->name = trim($request->name);
         $data->email = trim($request->email);
@@ -49,15 +53,19 @@ class AdminController extends Controller
 
     public function edit_insert(Request $request,$id){
         //dd("Yooo");
+        $data = $request->validate([
+            'email' => 'required|email|unique:users,email,'. $id
 
+        ]);
         $data = User::find($id);
 
         $data->name = trim($request->name);
         
         $data->email = trim($request->email);
 
-        $data->password = Hash::make($request->password);
-
+        if(!empty($request->password)){
+            $data->password = Hash::make($request->password);
+        }
         $data->save();
 
         return redirect('admin/list')->with('success','The Admin User has been Updated Successfully');
