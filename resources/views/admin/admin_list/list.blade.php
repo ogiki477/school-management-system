@@ -6,35 +6,46 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2 align-items-center">
-                <div class="col-sm-12 text-end">
-                    <a href="{{ url('admin/add')}}" class="btn btn-primary">Add New Admin</a>
-                </div>
-                <div class="col-sm-12">
-                    @include('message')
-                    <h1>Admin List</h1>
-
-                    {{-- Filter Dropdown --}}
-                    <div class="mb-3">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Filter Search
-                            </button>
-                            <div class="dropdown-menu p-4 shadow" style="min-width: 300px;" aria-labelledby="filterDropdown">
-                                <form action="{{ url('admin/list') }}" method="GET">
-                                    <div class="form-group mb-3">
-                                        <label class="form-label">Name</label>
-                                        <input type="text" name="name" value="{{ Request::get('name') }}" class="form-control" placeholder="Enter name">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="text" name="email" value="{{ Request::get('email') }}" class="form-control" placeholder="Enter email">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Search</button>
-                                    <a href="{{ url('admin/list') }}" class="btn btn-secondary">Reset</a>
-                                </form>
-                            </div>
-                        </div>
+                <div class="col-md-12">
+                    {{-- Prominent Add New Admin Button --}}
+                    <div class="mb-3 text-end">
+                        <a href="{{ url('admin/add')}}" class="btn btn-primary btn-lg">
+                             Add New Admin
+                        </a>
                     </div>
+
+                    @include('message')
+
+                    {{-- Search Card --}}
+                    <div class="card">
+                        
+                        <form action="" method="">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                      <label>Name</label>
+                                      <input type="text" class="form-control" value="{{Request::get('name')}}" name="name" placeholder="search by name">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" value="{{Request::get('email')}}" name="email"  placeholder="search by email">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Registered Date</label>
+                                        <input type="date" class="form-control" value="{{Request::get('date')}}" name="date" placeholder="search by name">
+                                      </div>
+
+                                    <div class="form-group col-md-3">
+                                        <a href=""><button class="btn btn-primary" type="submit" style="margin-top: 25px;">Search</button></a>
+                                        <a href="{{ url('admin/list') }}" class="btn btn-success"  style="margin-top: 25px;">Reset</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                   
+                    <h1>Admin List</h1>
 
                     <div class="card-body p-0">
                         <table class="table table-striped">
@@ -53,9 +64,11 @@
                                         <td>{{ $value->id }}</td>
                                         <td>{{ $value->name }}</td>
                                         <td>{{ $value->email }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
+                                        <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                         <td>
-                                            <a href="{{ url('admin/edit/'.$value->id) }}" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="{{ url('admin/edit/'.$value->id) }}" class="btn btn-primary">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
                                             <a href="{{ url('admin/delete/'.$value->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?')">
                                                 <i class="bi bi-trash"></i>
                                             </a>
@@ -64,7 +77,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-
                         {{-- Pagination Links --}}
                         <div>
                             {!! $getRecord->appends(request()->except('page'))->links() !!}
