@@ -16,6 +16,11 @@
                     <a href="{{ url('admin/list')}}" class="nav-link @if(Request::segment(2) == 'list') @else active @endif"> <i class="nav-icon bi bi-person"></i> 
                     <p>Admin</p></a>
                 </li>
+
+                <li class="nav-item menu-open"> 
+                    <a href="{{ url('admin/class/list')}}" class="nav-link @if(Request::segment(2) == 'class') @else active @endif"> <i class="nav-icon bi bi-people"></i> 
+                    <p>Class</p></a>
+                </li>
                        
             </ul> <!--end::Sidebar Menu-->
         </nav>
