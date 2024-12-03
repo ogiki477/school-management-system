@@ -11,7 +11,12 @@ class ClassSubjectController extends Controller
      */
     public function index()
     {
-        //
+       // dd("Yooo");
+
+       $data['meta_title'] = 'assign_subject';
+
+       return view('admin/assign_subject/list',$data);
+       
     }
 
     /**
