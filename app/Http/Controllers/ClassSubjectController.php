@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClassModel;
+use App\Models\ClassSubjectModel;
+use App\Models\SubjectModel;
 use Illuminate\Http\Request;
 
 class ClassSubjectController extends Controller
@@ -14,7 +17,7 @@ class ClassSubjectController extends Controller
        // dd("Yooo");
 
        $data['meta_title'] = 'assign_subject';
-
+       $data['getRecord'] = ClassSubjectModel::get();
        return view('admin/assign_subject/list',$data);
        
     }
@@ -24,7 +27,11 @@ class ClassSubjectController extends Controller
      */
     public function create()
     {
-        //
+        //dd("Yoo");
+        $data['getClass'] = ClassModel::getClass();
+        $data['getSubjectList'] = SubjectModel::getSubjectList();
+        $data['meta_title'] = 'Add_Assign Subject';
+        return view('admin/assign_subject/add',$data);
     }
 
     /**

@@ -34,4 +34,17 @@ class ClassModel extends Model
                      ->paginate(2);
         return $data;
     }
+
+
+    static public function getClass(){
+
+        $data = self::select('class.*')
+                ->join('users','users.id','class.created_by')
+                ->where('class.status','=',0)
+                ->orderBy('class.name','asc')
+                ->get();
+        return $data;
+
+    }
+
 }

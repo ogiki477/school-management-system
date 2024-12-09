@@ -30,4 +30,14 @@ class SubjectModel extends Model
                      ->paginate(2);
         return $data;
     }
+
+    
+    static public function getSubjectList(){
+        $data = self::select('subject.*')
+                ->join('users','users.id','subject.created_by')
+                ->where('subject.status','=',0)
+                ->orderBy('subject.name','asc')
+                ->get();
+        return $data;
+    }
 }

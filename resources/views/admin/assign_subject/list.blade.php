@@ -11,7 +11,7 @@
                 <div class="col-md-12">
                     {{-- Prominent Add New Admin Button --}}
                     <div class="mb-3 text-end">
-                        <a href="{{ url('admin/class/add')}}" class="btn btn-primary btn-lg">
+                        <a href="{{ url('admin/assign_subject/add')}}" class="btn btn-primary btn-lg">
                              Add New Assign Subject
                         </a>
                     </div>
@@ -45,7 +45,7 @@
                     </div>
 
                    
-                    <h1>Class List</h1>
+                    <h1>Assign Subject List</h1>
 
                     <div class="card-body p-0">
                         <table class="table table-striped">
