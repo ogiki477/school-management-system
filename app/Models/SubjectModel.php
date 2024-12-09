@@ -40,4 +40,5 @@ class SubjectModel extends Model
                 ->get();
         return $data;
     }
+
 }

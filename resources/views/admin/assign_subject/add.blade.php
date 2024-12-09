@@ -42,7 +42,6 @@
                                             @endforeach     
                                    </div>
 
-
                                    <div class="form-group">
                                     <label for="">Status</label>
                                     <select class="form-control" name="status" id="">

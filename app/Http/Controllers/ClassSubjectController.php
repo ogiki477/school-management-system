@@ -44,14 +44,24 @@ class ClassSubjectController extends Controller
         if(!empty($request->subject_id)){
 
             foreach($request->subject_id as $subject_id){
-                
-                $data = new ClassSubjectModel();
 
+                $getAlreadyFirst = ClassSubjectModel::getAlreadyFirst($request->class_id,$request->subject_id);
+                if(!empty($getAlreadyFirst)){
+
+                    $getAlreadyFirst->status = trim($request->status);
+                    $getAlreadyFirst->save();
+
+                }else{
+
+                    
+                $data = new ClassSubjectModel();
                 $data->class_id   = $request->class_id;
                 $data->subject_id = $subject_id;
                 $data->status     = trim($request->status);
                 $data->created_by = Auth::user()->id;
                 $data->save();
+
+                }
 
                 
 
