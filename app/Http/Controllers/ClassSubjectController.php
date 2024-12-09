@@ -6,6 +6,7 @@ use App\Models\ClassModel;
 use App\Models\ClassSubjectModel;
 use App\Models\SubjectModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClassSubjectController extends Controller
 {
@@ -39,7 +40,28 @@ class ClassSubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd("YOOO");
+        if(!empty($request->subject_id)){
+
+            foreach($request->subject_id as $subject_id){
+                
+                $data = new ClassSubjectModel();
+
+                $data->class_id   = $request->class_id;
+                $data->subject_id = $subject_id;
+                $data->status     = trim($request->status);
+                $data->created_by = Auth::user()->id;
+                $data->save();
+
+                
+
+            }
+
+            return redirect('admin/assign_subject/list')->with('success','Subject Successfully Assigned');
+
+        }else{
+            return redirect()->back()->with('error','An error occurred');
+        }
     }
 
     /**
