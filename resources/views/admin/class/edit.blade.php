@@ -8,10 +8,6 @@
             <div class="row mb-2 align-items-center">
                 <div class="col-sm-16">
                     <h1>Edit Class</h1>
-
-
-                    
-
                         <div class="card card-primary card-outline mb-4"> 
                             
                             <form action="{{ url('admin/class/edit/'.$getRecord->id)}}" method="post"> 
